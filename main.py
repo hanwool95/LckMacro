@@ -37,8 +37,7 @@ class Macro:
         self.alert_sound.play()
         time.sleep(10)
         pygame.quit()
-        while True:
-            pass
+        wait_action("종료를 원하시면 엔터를 눌러주세요.")
 
     def login(self):
         login_url = "https://accounts.interpark.com/authorize/ticket-pc?origin=https%3A%2F%2Fticket%2Einterpark%2Ecom%2FGate%2FTPLoginConfirmGate%2Easp&postProc=IFRAME"
@@ -150,7 +149,8 @@ if __name__ == '__main__':
                   config.birth_day)
     macro.login()
     try:
-        while True:
+        is_retry = True
+        while is_retry:
             seat_element = macro.check_soldout_and_get_seat_element()
             macro.select_auto_seat(seat_element)
             list_frame = macro.get_list_frame()
@@ -169,5 +169,6 @@ if __name__ == '__main__':
                 macro.set_agreement(list_frame)
 
                 macro.program_stop_with_alarm()
+                is_retry = False
     except:
         macro.program_stop_with_alarm()

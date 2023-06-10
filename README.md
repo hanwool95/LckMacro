@@ -12,3 +12,6 @@ https://chromedriver.chromium.org/downloads
 4. `pip install -r requirement.txt`
 5. config.py에 정보 입력
 6. `python main.py`
+
+### 종료 방법
+창을 닫거나, 콘솔에서 ctrl + C
