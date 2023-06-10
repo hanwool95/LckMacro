@@ -19,6 +19,7 @@ def wait_action(text: str):
 
 
 def sleep_random():
+    # 숫자 낮추어 서버에 피해를 가할 경우 처벌을 받을 수 있습니다.
     time.sleep(random.uniform(0.5, 1.5))
 
 
