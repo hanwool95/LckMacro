@@ -29,7 +29,7 @@ class Macro:
         self.login_pw = login_pw
         self.ticket_url = ticket_url
         self.birth_day = birth_day
-        self.driver = webdriver.Chrome("chromedriver")
+        self.driver = webdriver.Chrome(executable_path="/Users/hanwoolkim/PycharmProjects/LckMacro/chromedriver")
 
     def program_stop_with_alarm(self):
         pygame.init()
@@ -66,7 +66,7 @@ class Macro:
             self.driver.switch_to.window(self.driver.window_handles[1])
             target_frame = self.driver.find_element(By.XPATH, '/html/body/div[2]/iframe')
             self.driver.switch_to.frame(target_frame)
-            seat_element = self.driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div[2]/div[1]/a/span[2]')
+            seat_element = self.driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div[2]/div[1]/a[3]/span[2]')
             seat_label = seat_element.text
             print("current_seat: ", seat_label)
             if seat_label == "매진":
@@ -76,7 +76,7 @@ class Macro:
 
     def select_auto_seat(self, seat_element):
         seat_element.click()
-        autometic_element = self.driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div[2]/div[4]/a[1]/img')
+        autometic_element = self.driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div[2]/div[3]/a[1]/img')
         autometic_element.click()
 
     def get_list_frame(self):
@@ -104,6 +104,7 @@ class Macro:
         finishButtonElement.click()
 
         sleep_random()
+        sleep_random()
 
     def click_alert(self):
         da = Alert(self.driver)
@@ -113,10 +114,9 @@ class Macro:
 
     def set_delivery_method(self, list_frame):
         self.driver.switch_to.frame(list_frame)
-        buy_hyeonjang_element = self.driver.find_element(By.XPATH, '//*[@id="Delivery"]')
-        buy_hyeonjang_element.click()
-        birth_day_element = self.driver.find_element(By.XPATH,
-                                                "/ html / body / form / div / div[2] / div / div[1] / table / tbody / tr[2] / td / input")
+        # buy_hyeonjang_element = self.driver.find_element(By.XPATH, '//*[@id="Delivery"]')
+        # buy_hyeonjang_element.click()
+        birth_day_element = self.driver.find_element(By.XPATH, '//*[@id="YYMMDD"]')
         birth_day_element.send_keys(self.birth_day)
 
         self.driver.switch_to.default_content()
