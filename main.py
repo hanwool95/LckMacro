@@ -66,7 +66,7 @@ class Macro:
             self.driver.switch_to.window(self.driver.window_handles[1])
             target_frame = self.driver.find_element(By.XPATH, '/html/body/div[2]/iframe')
             self.driver.switch_to.frame(target_frame)
-            seat_element = self.driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div[2]/div[1]/a[3]/span[2]')
+            seat_element = self.driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/div[2]/div[1]/a[11]/span[2]')
             seat_label = seat_element.text
             print("current_seat: ", seat_label)
             if seat_label == "매진":
